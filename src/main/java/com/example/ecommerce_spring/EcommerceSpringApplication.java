@@ -1,5 +1,7 @@
 package com.example.ecommerce_spring;
 
+import com.example.ecommerce_spring.dto.CategoryDTO;
+import com.example.ecommerce_spring.dto.FakeStoreCategoryResponseDTO;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
