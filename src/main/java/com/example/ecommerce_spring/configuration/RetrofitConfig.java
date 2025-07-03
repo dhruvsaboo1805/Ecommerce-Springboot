@@ -11,8 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Configuration
 public class RetrofitConfig {
 
-    @Value("${FAKESTORE-BASEURL}")
-    private String baseurl;
+//    @Value("${FAKESTORE-BASEURL}")
+    private final String baseurl = "https://fakestoreapi.in/api/";
 
     @Bean
     public Retrofit retroFit() {
