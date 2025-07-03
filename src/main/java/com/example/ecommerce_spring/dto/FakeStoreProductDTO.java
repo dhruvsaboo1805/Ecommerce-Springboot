@@ -2,13 +2,12 @@ package com.example.ecommerce_spring.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
 public class FakeStoreProductDTO {
+    private ProductDTO products;
     private String status;
     private String message;
-    private ProductDTO products;
 }
