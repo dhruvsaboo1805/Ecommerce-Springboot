@@ -38,6 +38,10 @@ dependencies {
 	testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
 	implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.14'
 	implementation 'com.google.code.gson:gson:2.10.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+
 }
 
 tasks.named('test') {
