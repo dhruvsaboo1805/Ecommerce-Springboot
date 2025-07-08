@@ -3,10 +3,7 @@ package com.example.ecommerce_spring.controllers;
 import com.example.ecommerce_spring.dto.ProductDTO;
 import com.example.ecommerce_spring.services.IProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/products")
@@ -23,5 +20,12 @@ public class ProductController {
 
         return ResponseEntity.ok(res);
     }
+
+    @PostMapping
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO dto) throws Exception{
+        return ResponseEntity.ok(productService.createProduct(dto));
+    }
+
+
 
 }
