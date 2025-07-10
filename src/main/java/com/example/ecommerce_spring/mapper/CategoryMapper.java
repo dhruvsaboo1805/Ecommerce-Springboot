@@ -6,6 +6,7 @@ import com.example.ecommerce_spring.entity.Category;
 public class CategoryMapper {
     public static CategoryDTO todto(Category category) {
         return CategoryDTO.builder()
+                .id(category.getId())
                 .name(category.getName())
                 .build();
     }
