@@ -4,6 +4,8 @@ import com.example.ecommerce_spring.dto.ProductDTO;
 import com.example.ecommerce_spring.gateway.IProductGateway;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FakeStoreProductService implements IProductService{
     private final IProductGateway productGateway;
@@ -20,6 +22,11 @@ public class FakeStoreProductService implements IProductService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws Exception {
+        return null;
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByMinPrice(double minPrice) throws Exception {
         return null;
     }
 }

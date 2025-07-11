@@ -5,6 +5,8 @@ import com.example.ecommerce_spring.services.IProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -21,6 +23,11 @@ public class ProductController {
         return ResponseEntity.ok(res);
     }
 
+    @GetMapping("/price/{minPrice}")
+    public ResponseEntity<List<ProductDTO>> getProductsByMinPrice(@PathVariable double minPrice) throws Exception {
+        List<ProductDTO> res = productService.getProductsByMinPrice(minPrice);
+        return ResponseEntity.ok(res);
+    }
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO dto) throws Exception{
         return ResponseEntity.ok(productService.createProduct(dto));

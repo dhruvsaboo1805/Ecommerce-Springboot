@@ -24,4 +24,9 @@ public class FakeStoreCategoryService  implements ICategoryService{
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         return null;
     }
+
+    @Override
+    public CategoryDTO getByName(String name) throws Exception {
+        return null;
+    }
 }

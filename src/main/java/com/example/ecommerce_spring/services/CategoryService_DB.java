@@ -35,4 +35,11 @@ public class CategoryService_DB implements ICategoryService {
         Category saved = categoryRepository.save(cat);
         return CategoryMapper.todto(saved);
     }
+
+    @Override
+    public CategoryDTO getByName(String name) throws Exception {
+        Category category = categoryRepository.findByName(name)
+                .orElseThrow(() -> new Exception("Category with given name not found" + name));
+        return CategoryMapper.todto(category);
+    }
 }

@@ -9,6 +9,9 @@ import com.example.ecommerce_spring.repository.IProductRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Primary
 public class ProductService_DB implements IProductService {
@@ -34,5 +37,17 @@ public class ProductService_DB implements IProductService {
                 .orElseThrow(() -> new Exception("Category not found"));
         Product saved = productRepository.save(ProductMapper.toEntity(dto,category));
         return ProductMapper.todto(saved);
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByMinPrice(double minPrice) throws Exception {
+        List<Product> products = productRepository.findExpensiveProducts(minPrice);
+        List<ProductDTO> result = new ArrayList<>();
+
+        for (Product product : products) {
+            result.add(ProductMapper.todto(product));
+        }
+
+        return result;
     }
 }
