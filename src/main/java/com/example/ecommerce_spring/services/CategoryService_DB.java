@@ -47,12 +47,15 @@ public class CategoryService_DB implements ICategoryService {
     @Override
     public CategoryDTO getByName(String name) throws Exception {
 
-        // just trying to debugging by print statements
-        System.out.println("Looking for category name: " + name);
+        System.out.println("Calling findByName with name: " + name);
 
         Optional<Category> optionalCategory = categoryRepository.findByName(name);
 
-        System.out.println("Found? " + optionalCategory.isPresent());
+        System.out.println("Result from repository: " + optionalCategory);
+
+        if (optionalCategory.isEmpty()) {
+            System.out.println("Category not found, throwing exception...");
+        }
 
         Category category = optionalCategory
                 .orElseThrow(() -> new Exception("Category with given name not found " + name));
