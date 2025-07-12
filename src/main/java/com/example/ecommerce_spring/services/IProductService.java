@@ -10,4 +10,5 @@ public interface IProductService {
     ProductDTO createProduct(ProductDTO dto) throws Exception;
     List<ProductDTO> getProductsByMinPrice(double minPrice) throws Exception;
     ProductsWithCategoryDTO getProductWithCategory(Long id) throws Exception;
+    ProductDTO deleteProduct(Long id) throws Exception;
 }

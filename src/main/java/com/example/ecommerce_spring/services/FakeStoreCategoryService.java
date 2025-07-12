@@ -35,4 +35,9 @@ public class FakeStoreCategoryService  implements ICategoryService{
     public List<CategoryWithProductDTO> getCategoryWithProduct(Long id) throws Exception {
         return null;
     }
+
+    @Override
+    public CategoryDTO deleteCategory(Long id) throws Exception {
+        return null;
+    }
 }

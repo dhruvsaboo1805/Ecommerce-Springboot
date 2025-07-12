@@ -3,6 +3,7 @@ package com.example.ecommerce_spring.controllers;
 import com.example.ecommerce_spring.dto.CategoryDTO;
 import com.example.ecommerce_spring.dto.CategoryWithProductDTO;
 import com.example.ecommerce_spring.services.ICategoryService;
+import okhttp3.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,11 @@ public class CategoryController {
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
         CategoryDTO created = categoryService.createCategory(categoryDTO);
         return ResponseEntity.ok(created);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CategoryDTO> deleteCategory(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(categoryService.deleteCategory(id));
     }
 
 }

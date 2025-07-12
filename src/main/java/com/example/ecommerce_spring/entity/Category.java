@@ -1,9 +1,6 @@
 package com.example.ecommerce_spring.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -19,6 +16,6 @@ public class Category extends BaseEntity{
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category" , cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
     private List<Product> products;
 }

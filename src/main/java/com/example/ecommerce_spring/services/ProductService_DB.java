@@ -58,4 +58,13 @@ public class ProductService_DB implements IProductService {
                 .orElseThrow(() -> new Exception("Product with ategory not found"));
         return ProductMapper.toProductWithCategoryDTO(product);
     }
+
+    @Override
+    public ProductDTO deleteProduct(Long id) throws Exception {
+       Product product = productRepository.findById(id)
+               .orElseThrow(() -> new Exception("product not found with id: " + id));
+
+       productRepository.delete(product);
+       return ProductMapper.todto(product);
+    }
 }

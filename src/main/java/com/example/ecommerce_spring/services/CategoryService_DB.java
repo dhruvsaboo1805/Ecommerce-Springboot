@@ -9,12 +9,14 @@ import com.example.ecommerce_spring.mapper.CategoryMapper;
 import com.example.ecommerce_spring.mapper.ProductMapper;
 import com.example.ecommerce_spring.repository.ICategoryRepository;
 import org.springframework.context.annotation.Primary;
+import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,8 +46,17 @@ public class CategoryService_DB implements ICategoryService {
 
     @Override
     public CategoryDTO getByName(String name) throws Exception {
-        Category category = categoryRepository.findByName(name)
-                .orElseThrow(() -> new Exception("Category with given name not found" + name));
+
+        // just trying to debugging by print statements
+        System.out.println("Looking for category name: " + name);
+
+        Optional<Category> optionalCategory = categoryRepository.findByName(name);
+
+        System.out.println("Found? " + optionalCategory.isPresent());
+
+        Category category = optionalCategory
+                .orElseThrow(() -> new Exception("Category with given name not found " + name));
+
         return CategoryMapper.todto(category);
     }
 
@@ -61,5 +72,14 @@ public class CategoryService_DB implements ICategoryService {
 
         return Collections.singletonList(CategoryMapper.tocategoryWithProductDTO(category, productDTOs));
 
+    }
+
+    @Override
+    public CategoryDTO deleteCategory(Long id) throws Exception {
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new Exception("Category id not found " + id));
+
+        categoryRepository.delete(category);
+        return CategoryMapper.todto(category);
     }
 }

@@ -11,4 +11,5 @@ public interface ICategoryService {
       CategoryDTO createCategory(CategoryDTO categoryDTO);
       CategoryDTO getByName(String name) throws Exception;
       List<CategoryWithProductDTO> getCategoryWithProduct(Long id) throws Exception;
+      CategoryDTO deleteCategory(Long id) throws Exception;
 }

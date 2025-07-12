@@ -41,6 +41,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.createProduct(dto));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ProductDTO> deleteProduct(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(productService.deleteProduct(id));
+    }
+
 
 
 }
