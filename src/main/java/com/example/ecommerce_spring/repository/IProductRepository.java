@@ -15,4 +15,12 @@ public interface IProductRepository extends JpaRepository<Product,Long> {
     @Query("SELECT p from Product p WHERE p.price > :minPrice")
     List<Product> findExpensiveProducts(@Param("minPrice") double minPrice);
 
+    // advance usecase
+    //limit
+    //regex
+    // raw sql query
+    @Query(value="SELECT * FROM product WHERE MATCH(name , description) AGAINST (:keyword)" , nativeQuery = true)
+    List<Product> searchFullText(@Param("keyword") String keyword);
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.ecommerce_spring.services;
 
 import com.example.ecommerce_spring.dto.ProductDTO;
+import com.example.ecommerce_spring.dto.ProductsWithCategoryDTO;
 import com.example.ecommerce_spring.gateway.IProductGateway;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,11 @@ public class FakeStoreProductService implements IProductService{
 
     @Override
     public List<ProductDTO> getProductsByMinPrice(double minPrice) throws Exception {
+        return null;
+    }
+
+    @Override
+    public ProductsWithCategoryDTO getProductWithCategory(Long id) throws Exception {
         return null;
     }
 }
