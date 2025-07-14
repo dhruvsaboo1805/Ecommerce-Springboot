@@ -4,6 +4,7 @@ import com.example.ecommerce_spring.dto.ProductDTO;
 import com.example.ecommerce_spring.dto.ProductsWithCategoryDTO;
 import com.example.ecommerce_spring.entity.Category;
 import com.example.ecommerce_spring.entity.Product;
+import com.example.ecommerce_spring.exception.ProductNotFoundException;
 import com.example.ecommerce_spring.mapper.ProductMapper;
 import com.example.ecommerce_spring.repository.ICategoryRepository;
 import com.example.ecommerce_spring.repository.IProductRepository;
@@ -60,9 +61,9 @@ public class ProductService_DB implements IProductService {
     }
 
     @Override
-    public ProductDTO deleteProduct(Long id) throws Exception {
+    public ProductDTO deleteProduct(Long id) {
        Product product = productRepository.findById(id)
-               .orElseThrow(() -> new Exception("product not found with id: " + id));
+               .orElseThrow(() -> new ProductNotFoundException("product not found with id: " + id + "not found"));
 
        productRepository.delete(product);
        return ProductMapper.todto(product);
