@@ -40,4 +40,9 @@ public class FakeStoreProductService implements IProductService{
     public ProductDTO deleteProduct(Long id) throws Exception {
         return null;
     }
+
+    @Override
+    public List<ProductDTO> getAllProducts() {
+        return null;
+    }
 }

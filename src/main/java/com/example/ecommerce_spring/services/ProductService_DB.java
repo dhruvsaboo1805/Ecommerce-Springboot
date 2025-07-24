@@ -68,4 +68,9 @@ public class ProductService_DB implements IProductService {
        productRepository.delete(product);
        return ProductMapper.todto(product);
     }
+
+    @Override
+    public List<ProductDTO> getAllProducts() {
+        return null;
+    }
 }

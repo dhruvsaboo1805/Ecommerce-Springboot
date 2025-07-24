@@ -24,6 +24,12 @@ public class ProductController {
         return ResponseEntity.ok(res);
     }
 
+    @GetMapping("")
+    public ResponseEntity<List<ProductDTO>> getALLProducts() {
+        List<ProductDTO> res = productService.getAllProducts();
+        return ResponseEntity.ok(res);
+    }
+
     @GetMapping("/price/{minPrice}")
     public ResponseEntity<List<ProductDTO>> getProductsByMinPrice(@PathVariable double minPrice) throws Exception {
         List<ProductDTO> res = productService.getProductsByMinPrice(minPrice);
